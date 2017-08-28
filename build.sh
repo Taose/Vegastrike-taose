@@ -1,3 +1,7 @@
+#-------------------------#
+# Created 21. August 2017 #
+#-------------------------#
+
 #!/bin/bash
 
 ROOT_DIR=$(pwd)
@@ -11,9 +15,13 @@ fi
 
 cd $BUILD_DIR
 
-cmake $ROOT_DIR/engine
-make -j$(nproc)
+cmake -DCMAKE_BUILD_TYPE=Release $ROOT_DIR/engine
+make clean && make -j$(nproc)
 
 cd $ROOT_DIR
-mkdir $BIN_DIR
+
+if [ ! -d "$BIN_DIR" ]; then
+    mkdir $BIN_DIR
+fi
+
 cp $BUILD_DIR/{vegastrike,vegaserver,setup/vssetup,objconv/mesh_tool} $BIN_DIR
