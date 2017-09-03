@@ -1,1 +1,8 @@
+<<<<<<< HEAD
+=======
+archives/
+bin/
+engine/build/
+**.pyc
+>>>>>>> master
 *.pyc
